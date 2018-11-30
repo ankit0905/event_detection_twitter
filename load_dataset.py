@@ -1,7 +1,8 @@
 import os
 import numpy as np
 
-BASE_DIR = 'C:/Users/ankit/Documents/project_/event_detection_twitter/data/average_vectors'
+
+BASE_DIR = '/home/nikhil/event_detection_twitter/data/average_vectors'
 
 def load_dataset():
 	label = 0
@@ -13,9 +14,9 @@ def load_dataset():
 		for filename in os.listdir(tmp_dir):
 			vecs = np.load(os.path.join(tmp_dir, filename))
 			X.extend(vecs)
-			size += len(vecs)
-		Y.extend([label]*size)
-		label += 1
+			size = len(vecs)
+			Y.extend([label]*size)
+			label += 1
 	X = np.array(X)
 	Y = np.array(Y)
 	print(X.shape, Y.shape)
